@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter as Router, Link, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom';
 import TutorialAdd from './components/TutorialAdd';
 import TutorialList from './components/TutorialList';
 import TutorialDetail from './components/TutorialDetail';
@@ -10,9 +10,14 @@ function App() {
   return (
     <Router>
       <nav className='navbar navbar-expand navbar-dark bg-dark'>
-        <a href="/tutorials" className="navbar-brand">
-          react-training-1
+
+        <a href="/tutorials" className="navbar-brand container">
+          Fruit Quality Detection
         </a>
+        <text className='container'>
+          react
+        </text>
+
         <div className='navbar-nav mr-auto'>
           <li className='nav-item'>
             <Link to="/tutorials" className="nav-link">
@@ -29,9 +34,9 @@ function App() {
 
       <div className='container mt-3'>
         <Routes>
-          <Route path="/tutorials" element={<TutorialList/>}/>
-          <Route path="/tutorials/:id" element={<TutorialDetail/>}/>
-          <Route path="/tutorials/add" element={<TutorialAdd/>}/>
+          <Route path="/tutorials" element={<TutorialList />} />
+          <Route path="/tutorials/:id" element={<TutorialDetail />} />
+          <Route path="/tutorials/add" element={<TutorialAdd />} />
         </Routes>
       </div>
     </Router>

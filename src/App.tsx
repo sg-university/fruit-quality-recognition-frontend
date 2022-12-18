@@ -12,7 +12,7 @@ function App() {
       <nav className='navbar navbar-expand navbar-dark bg-dark'>
 
         <a href="/tutorials" className="navbar-brand container">
-          Fruit Quality Detection
+          Fruit Quality Detection v1
         </a>
         <text className='container'>
           react

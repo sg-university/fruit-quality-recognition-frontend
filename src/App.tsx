@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom';
+import './App.scss';
+import {BrowserRouter as Router, Link, Routes, Route} from 'react-router-dom';
 import TutorialAdd from './components/TutorialAdd';
 import TutorialList from './components/TutorialList';
 import TutorialDetail from './components/TutorialDetail';
@@ -34,9 +34,9 @@ function App() {
 
       <div className='container mt-3'>
         <Routes>
-          <Route path="/tutorials" element={<TutorialList />} />
-          <Route path="/tutorials/:id" element={<TutorialDetail />} />
-          <Route path="/tutorials/add" element={<TutorialAdd />} />
+          <Route path="/tutorials" element={<TutorialList/>}/>
+          <Route path="/tutorials/:id" element={<TutorialDetail/>}/>
+          <Route path="/tutorials/add" element={<TutorialAdd/>}/>
         </Routes>
       </div>
     </Router>

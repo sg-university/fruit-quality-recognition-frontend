@@ -2,9 +2,10 @@
   "compilerOptions": {
     "target": "es5",
     "lib": [
+      "esnext",
       "dom",
       "dom.iterable",
-      "esnext"
+      "webworker"
     ],
     "allowJs": true,
     "skipLibCheck": true,

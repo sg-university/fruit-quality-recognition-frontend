@@ -49,7 +49,7 @@ const DetectionListComponent = (props: any) => {
         </thead>
         <tbody>
         {
-          detections && detections.reverse().map((detection: DetectionEntity, index: number) => {
+          detections && detections.map((detection: DetectionEntity, index: number) => {
             return (<tr key={index}>
                 <td>
                   <img className=""
@@ -70,7 +70,7 @@ const DetectionListComponent = (props: any) => {
                 </td>
               </tr>
             );
-          })
+          }).reverse()
         }
         </tbody>
       </table>

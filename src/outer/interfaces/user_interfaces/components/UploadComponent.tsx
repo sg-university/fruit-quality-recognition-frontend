@@ -32,7 +32,7 @@ const UploadComponent = (props: any) => {
   return (
     <div className="upload component">
       <input multiple type="file" accept="image/*" onChange={handleOnChangeFile}/>
-      <div className="btn btn-success mt-3" onClick={() => handleOnClickUpload()}>Upload</div>
+      <div className="btn btn-success my-3" onClick={() => handleOnClickUpload()}>Upload</div>
     </div>
   );
 };

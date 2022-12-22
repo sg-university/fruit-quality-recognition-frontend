@@ -62,11 +62,13 @@ const DetectionListComponent = (props: any) => {
                 <td>{RelationshipUsecase.getOneImage(detection, images)?.file_name}</td>
                 <td>{getTopOneFromResult(detection.result)}</td>
                 <td>
-                  <div className="btn btn-info me-2" onClick={() => handleOnClickDetail(detection)}>
-                    Detail
-                  </div>
-                  <div className="btn btn-danger mt-3" onClick={() => handleOnClickDelete(detection)}>
-                    Delete
+                  <div className="d-flex flex-column">
+                    <div className="btn btn-info me-2" onClick={() => handleOnClickDetail(detection)}>
+                      Detail
+                    </div>
+                    <div className="btn btn-danger my-3" onClick={() => handleOnClickDelete(detection)}>
+                      Delete
+                    </div>
                   </div>
                 </td>
               </tr>

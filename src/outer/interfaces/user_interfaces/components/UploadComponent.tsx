@@ -25,8 +25,8 @@ const UploadComponent = (props: any) => {
     const request: CreateOneImageRequest[] = await Promise.all(
       files.map(async (file: File) => new CreateOneImageRequest(file.name, await resizeFile(file)))
     );
-
     dispatch(detectManyImage(request));
+    setFiles([]);
   };
 
   return (

@@ -21,7 +21,6 @@ class ImageClient {
   };
 
   createMany = (entities: CreateOneImageRequest[]): Promise<AxiosResponse<Content<ImageEntity[]>>> => {
-    throw new Error("This feature not yet implemented.");
     return Axios.post(`${this.URL}/many`, entities);
   };
 

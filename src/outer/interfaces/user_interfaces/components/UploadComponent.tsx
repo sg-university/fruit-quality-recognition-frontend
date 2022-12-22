@@ -1,8 +1,7 @@
 import React, {Dispatch, useState} from 'react';
-import {uploadOneImage} from "../../../actions/Images";
 import {useDispatch} from "react-redux";
 import CreateOneImageRequest from "../../../../inner/models/value_objects/requests/CreateOneImageRequest";
-import {detectOneImage} from "../../../actions/Detections";
+import {detectManyImage} from "../../../actions/Detections";
 import Resizer from "react-image-file-resizer";
 
 const UploadComponent = (props: any) => {
@@ -22,20 +21,18 @@ const UploadComponent = (props: any) => {
       }, 'base64');
   });
 
-  const handleOnClickUpload = () => {
-    files.forEach(async file => {
-      const request: CreateOneImageRequest = new CreateOneImageRequest(
-        file.name,
-        await resizeFile(file)
-      );
-      dispatch(detectOneImage(request));
-    });
+  const handleOnClickUpload = async () => {
+    const request: CreateOneImageRequest[] = await Promise.all(
+      files.map(async (file: File) => new CreateOneImageRequest(file.name, await resizeFile(file)))
+    );
+
+    dispatch(detectManyImage(request));
   };
 
   return (
     <div className="upload component">
       <input multiple type="file" accept="image/*" onChange={handleOnChangeFile}/>
-      <div className="btn btn-success" onClick={() => handleOnClickUpload()}>Upload</div>
+      <div className="btn btn-success mt-3" onClick={() => handleOnClickUpload()}>Upload</div>
     </div>
   );
 };

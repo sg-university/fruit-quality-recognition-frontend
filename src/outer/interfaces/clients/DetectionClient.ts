@@ -21,7 +21,6 @@ class DetectionClient {
   };
 
   createMany = (entities: CreateOneDetectionRequest[]): Promise<AxiosResponse<Content<DetectionEntity[]>>> => {
-    throw new Error("This feature not yet implemented.");
     return Axios.post(`${this.URL}/many`, entities);
   };
 

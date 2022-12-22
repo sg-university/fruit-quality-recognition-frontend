@@ -29,6 +29,7 @@ const DetectionListComponent = (props: any) => {
 
   const getTopOneFromResult = (result: string): string => {
     const data = JSON.parse(result);
+    console.log(data);
     const sortedData = Object.entries(data[0])
       .sort((a: any, b: any): number => {
         return b[1] - a[1];
@@ -64,7 +65,7 @@ const DetectionListComponent = (props: any) => {
                   <div className="btn btn-info me-2" onClick={() => handleOnClickDetail(detection)}>
                     Detail
                   </div>
-                  <div className="btn btn-danger" onClick={() => handleOnClickDelete(detection)}>
+                  <div className="btn btn-danger mt-3" onClick={() => handleOnClickDelete(detection)}>
                     Delete
                   </div>
                 </td>

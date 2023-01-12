@@ -2,9 +2,10 @@ import RecognitionEntity from "../../models/entities/RecognitionEntity";
 import ImageEntity from "../../models/entities/ImageEntity";
 
 class RelationshipUseCase {
-  getManyRecognitions = (image: ImageEntity, recognitions: RecognitionEntity[]): RecognitionEntity[] | undefined => {
-    return recognitions.filter(recognition => recognition.image_id === image.id);
+  getOneImage = (recognition: RecognitionEntity, images: ImageEntity[]): ImageEntity | undefined => {
+    return images.find(image => image.id === recognition.image_id);
   };
+
 }
 
 export default new RelationshipUseCase();

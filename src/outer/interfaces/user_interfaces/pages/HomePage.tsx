@@ -1,4 +1,4 @@
-import DetectionListComponent from "../components/DetectionListComponent";
+import RecognitionListComponent from "../components/RecognitionListComponent";
 import UploadComponent from "../components/UploadComponent";
 import "./styles/HomePageStyle.scss";
 
@@ -7,10 +7,10 @@ const HomePage = () => {
     <div className="home page m-4">
       <div className="title mb-4">
         <h1>
-          Fruit Quality Detection
+          Fruit Quality Recognition
         </h1>
         <text>
-          Recognition System to detect the quality of six fruits, namely apple, banana, guava, lime, orange, and
+          Recognition System to recognize the quality of six fruits, namely apple, banana, guava, lime, orange, and
           pomegranate.
         </text>
       </div>
@@ -22,11 +22,11 @@ const HomePage = () => {
         <UploadComponent/>
       </div>
 
-      <div className="detection">
+      <div className="recognition">
         <h2>
-          Detections
+          Recognitions
         </h2>
-        <DetectionListComponent/>
+        <RecognitionListComponent/>
       </div>
     </div>
   );

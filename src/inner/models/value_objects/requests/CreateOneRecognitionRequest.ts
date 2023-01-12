@@ -1,4 +1,4 @@
-class CreateOneDetectionRequest {
+class CreateOneRecognitionRequest {
   image_id: string;
 
   constructor(image_id: string) {
@@ -6,4 +6,4 @@ class CreateOneDetectionRequest {
   }
 }
 
-export default CreateOneDetectionRequest;
+export default CreateOneRecognitionRequest;

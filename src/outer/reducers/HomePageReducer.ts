@@ -1,15 +1,15 @@
-import DetectionEntity from "../../inner/models/entities/DetectionEntity";
+import RecognitionEntity from "../../inner/models/entities/RecognitionEntity";
 
-import {DELETE_ONE_DETECTION_BY_ID, DETECT_MANY_IMAGE, FETCH_ALL_DETECTION, FETCH_ALL_IMAGE,} from "../actions/Types";
+import {DELETE_ONE_RECOGNITION_BY_ID, DETECT_MANY_IMAGE, FETCH_ALL_RECOGNITION, FETCH_ALL_IMAGE,} from "../actions/Types";
 import ImageEntity from "../../inner/models/entities/ImageEntity";
 
 type HomePageState = {
-  detections: DetectionEntity[],
+  recognitions: RecognitionEntity[],
   images: ImageEntity[]
 }
 
 const initialState: HomePageState = {
-  detections: [],
+  recognitions: [],
   images: []
 };
 
@@ -18,14 +18,14 @@ const homePageReducer = (state: HomePageState = initialState, action: any) => {
   switch (type) {
     case FETCH_ALL_IMAGE:
       return {...state, images: payload};
-    case FETCH_ALL_DETECTION:
-      return {...state, detections: payload};
-    case DELETE_ONE_DETECTION_BY_ID:
-      return {...state, detections: state.detections.filter((detection: DetectionEntity) => detection.id !== payload)};
+    case FETCH_ALL_RECOGNITION:
+      return {...state, recognitions: payload};
+    case DELETE_ONE_RECOGNITION_BY_ID:
+      return {...state, recognitions: state.recognitions.filter((recognition: RecognitionEntity) => recognition.id !== payload)};
     case DETECT_MANY_IMAGE:
       return {
         ...state,
-        detections: [...state.detections, ...payload.detectionData],
+        recognitions: [...state.recognitions, ...payload.recognitionData],
         images: [...state.images, ...payload.imageData]
       };
     default:

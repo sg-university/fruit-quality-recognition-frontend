@@ -1,4 +1,4 @@
-class DetectionEntity {
+class RecognitionEntity {
   id: string;
   image_id: string;
   result: string;
@@ -14,4 +14,4 @@ class DetectionEntity {
   }
 }
 
-export default DetectionEntity;
+export default RecognitionEntity;

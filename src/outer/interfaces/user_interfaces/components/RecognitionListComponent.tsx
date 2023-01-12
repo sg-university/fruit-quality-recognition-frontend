@@ -1,35 +1,35 @@
 import React, {Dispatch, useEffect, useState} from 'react';
-import DetectionEntity from "../../../../inner/models/entities/DetectionEntity";
-import RelationshipUsecase from "../../../../inner/usecases/detection/RelationshipUseCase";
-import RelationshipUseCase from "../../../../inner/usecases/detection/RelationshipUseCase";
-import {deleteOneDetectionById, fetchAllDetection} from "../../../actions/Detections";
+import RecognitionEntity from "../../../../inner/models/entities/RecognitionEntity";
+import RelationshipUsecase from "../../../../inner/usecases/recognition/RelationshipUseCase";
+import RelationshipUseCase from "../../../../inner/usecases/recognition/RelationshipUseCase";
+import {deleteOneRecognitionById, fetchAllRecognition} from "../../../actions/Recognitions";
 import {fetchAllImage} from "../../../actions/Images";
 import {useDispatch, useSelector} from "react-redux";
 import {HomePageState} from "../../../reducers/HomePageReducer";
 import ModalComponent from "./ModalComponent";
 import {Modal} from "react-bootstrap";
 
-const DetectionListComponent = (props: any) => {
+const RecognitionListComponent = (props: any) => {
   const dispatch: Dispatch<any> = useDispatch();
   const {
-    detections,
+    recognitions,
     images
   }: HomePageState = useSelector((state: any) => state.homePageReducer);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [currentDetection, setCurrentDetection] = useState<DetectionEntity | null>(null);
+  const [currentRecognition, setCurrentRecognition] = useState<RecognitionEntity | null>(null);
 
   useEffect(() => {
-    dispatch(fetchAllDetection());
+    dispatch(fetchAllRecognition());
     dispatch(fetchAllImage());
   }, []);
 
-  const handleOnClickDelete = (entity: DetectionEntity) => {
-    dispatch(deleteOneDetectionById(entity.id));
+  const handleOnClickDelete = (entity: RecognitionEntity) => {
+    dispatch(deleteOneRecognitionById(entity.id));
   };
 
-  const handleOnClickDetail = (entity: DetectionEntity) => {
+  const handleOnClickDetail = (entity: RecognitionEntity) => {
     setIsModalOpen(true);
-    setCurrentDetection(entity);
+    setCurrentRecognition(entity);
     console.log(entity, isModalOpen);
   };
 
@@ -70,7 +70,7 @@ const DetectionListComponent = (props: any) => {
             </thead>
             <tbody>
             {
-              currentDetection && getListFromResult(currentDetection.result).map((item: any, index: number) => {
+              currentRecognition && getListFromResult(currentRecognition.result).map((item: any, index: number) => {
                   return (
                     <tr key={index}>
                       <td>{item[0]}</td>
@@ -94,16 +94,16 @@ const DetectionListComponent = (props: any) => {
         </thead>
         <tbody>
         {
-          detections && detections.map((detection: DetectionEntity, index: number) => {
+          recognitions && recognitions.map((recognition: RecognitionEntity, index: number) => {
             return (<tr key={index}>
                 <td>
                   <img className=""
                        src={
-                         `data:image/jpeg;base64,${RelationshipUseCase.getOneImage(detection, images)?.file}`
+                         `data:image/jpeg;base64,${RelationshipUseCase.getOneImage(recognition, images)?.file}`
                        }
                   />
                 </td>
-                <td>{RelationshipUsecase.getOneImage(detection, images)?.file_name}</td>
+                <td>{RelationshipUsecase.getOneImage(recognition, images)?.file_name}</td>
                 <td>
                   <table className="table table-hover">
                     <thead>
@@ -114,7 +114,7 @@ const DetectionListComponent = (props: any) => {
                     </thead>
                     <tbody>
                     {
-                      getTopNFromResult(detection.result, 3).map((item: any, index: number) => {
+                      getTopNFromResult(recognition.result, 3).map((item: any, index: number) => {
                         return (
                           <tr key={index}>
                             <td>{item[0]}</td>
@@ -128,10 +128,10 @@ const DetectionListComponent = (props: any) => {
                 </td>
                 <td>
                   <div className="d-flex flex-column">
-                    <div className="btn btn-info me-2" onClick={() => handleOnClickDetail(detection)}>
+                    <div className="btn btn-info me-2" onClick={() => handleOnClickDetail(recognition)}>
                       Detail
                     </div>
-                    <div className="btn btn-danger my-3" onClick={() => handleOnClickDelete(detection)}>
+                    <div className="btn btn-danger my-3" onClick={() => handleOnClickDelete(recognition)}>
                       Delete
                     </div>
                   </div>
@@ -146,4 +146,4 @@ const DetectionListComponent = (props: any) => {
   );
 };
 
-export default DetectionListComponent;
+export default RecognitionListComponent;
